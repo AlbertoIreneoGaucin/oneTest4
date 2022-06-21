@@ -1,3 +1,5 @@
+
+/*
 package com.tfs.oneTest4.auth;
 
 import org.springframework.security.core.GrantedAuthority;
@@ -67,3 +69,6 @@ public class ApplicationUser implements UserDetails {
         return isEnabled;
     }
 }
+
+
+ */

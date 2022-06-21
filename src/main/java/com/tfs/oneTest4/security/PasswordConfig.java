@@ -1,3 +1,5 @@
+/*
+
 package com.tfs.oneTest4.security;
 
 
@@ -14,3 +16,6 @@ public class PasswordConfig {
         return new BCryptPasswordEncoder(10);
     }
 }
+
+
+ */

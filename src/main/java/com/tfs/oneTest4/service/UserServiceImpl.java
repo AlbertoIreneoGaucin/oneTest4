@@ -1,3 +1,5 @@
+
+/*
 package com.tfs.oneTest4.service;
 
 import com.tfs.oneTest4.domain.Role;
@@ -54,3 +56,7 @@ public class UserServiceImpl implements UserService{
         return userRepo.findAll();
     }
 }
+
+
+
+ */

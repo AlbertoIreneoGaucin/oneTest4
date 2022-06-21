@@ -1,3 +1,5 @@
+/*
+
 package com.tfs.oneTest4.service;
 
 import com.tfs.oneTest4.domain.Role;
@@ -14,3 +16,7 @@ public interface UserService {
     // in the real world, return a page of users, so only the first 10 users
     List<User> getUsers();
 }
+
+
+
+ */

@@ -1,3 +1,5 @@
+/*
+
 package com.tfs.oneTest4.security;
 
 
@@ -78,7 +80,7 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
                  */
         //defaults to 2 weeks
         //change the time .tokenValiditySeconds( (int) TimeUnit.DAYS.toSeconds(21) ).key("somethingverysecure")
-    }
+
 
 
     /*
@@ -111,7 +113,7 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
 
-     */
+
     @Bean
     public DaoAuthenticationProvider daoAuthenticationProvider(){
         DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
@@ -125,3 +127,7 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
         auth.authenticationProvider(daoAuthenticationProvider());
     }
 }
+
+
+
+     */

@@ -1,3 +1,5 @@
+/*
+
 package com.tfs.oneTest4.jwt;
 
 public class UsernameAndPasswordAuthenticationRequest {
@@ -23,3 +25,6 @@ public class UsernameAndPasswordAuthenticationRequest {
         this.password = password;
     }
 }
+
+
+ */

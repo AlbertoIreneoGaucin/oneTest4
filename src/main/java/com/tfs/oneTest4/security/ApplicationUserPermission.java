@@ -1,3 +1,5 @@
+/*
+
 package com.tfs.oneTest4.security;
 
 public enum ApplicationUserPermission {
@@ -17,3 +19,6 @@ public enum ApplicationUserPermission {
         return permission;
     }
 }
+
+
+ */

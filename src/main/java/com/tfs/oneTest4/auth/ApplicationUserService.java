@@ -1,3 +1,5 @@
+/*
+
 package com.tfs.oneTest4.auth;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,3 +26,6 @@ public class ApplicationUserService implements UserDetailsService {
                 .orElseThrow(() -> new UsernameNotFoundException(String.format("Username %s not found", username)));
     }
 }
+
+
+ */

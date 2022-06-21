@@ -1,3 +1,5 @@
+/*
+
 package com.tfs.oneTest4.security;
 import com.google.common.collect.Sets;
 import org.springframework.security.core.GrantedAuthority;
@@ -34,3 +36,5 @@ public enum ApplicationUserRole {
         return permissions;
     }
 }
+
+ */
