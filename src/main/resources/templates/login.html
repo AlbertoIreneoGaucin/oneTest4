@@ -1,5 +1,5 @@
-
 <!--
+
 <html lang="en"><head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -34,7 +34,8 @@
         <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
     </form>
 </div>
-</body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></html>
+</body>
+</html>
 
 -->
 <!DOCTYPE html>
@@ -46,6 +47,7 @@
 <body class="text-center">
 <div layout:fragment="content">
     <form class="form-signin" th:action="@{/login}" method="post">
+        <img class="mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72" />
         <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
         <div th:if="${param.error}">
             Invalid email and password.
@@ -65,3 +67,4 @@
 </div>
 </body>
 </html>
+

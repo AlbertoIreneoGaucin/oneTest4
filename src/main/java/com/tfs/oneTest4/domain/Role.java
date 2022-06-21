@@ -23,6 +23,7 @@ public class Role {
 
  */
 
+import org.springframework.data.mongodb.core.index.IndexDirection;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import org.springframework.data.mongodb.core.index.Indexed;

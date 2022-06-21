@@ -1,3 +1,6 @@
+
+
+
 package com.tfs.oneTest4.controller;
 
 
@@ -17,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 
-@RestController
+@Controller
 public class LoginController {
 
     @Autowired
@@ -79,4 +82,6 @@ public class LoginController {
     }
 
 }
+
+
 

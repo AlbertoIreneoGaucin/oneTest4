@@ -7,6 +7,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.IndexDirection;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.MongoId;
@@ -19,15 +21,16 @@ import java.util.Set;
 
 
 @Document(collection = "Users")
-public class User implements UserDetails {
+public class User {
     private @MongoId
     String id;
+    @Indexed(unique = true)
     private String email;
     private String username;
     private String password;
 
     private boolean enabled;
-    @DBRef
+    //@DBRef
     private Set<Role> roles;
 
     //without id
@@ -62,7 +65,7 @@ public class User implements UserDetails {
         return password;
     }
 
-    @Override
+
     public String getUsername() {
         return null;
     }
@@ -96,25 +99,9 @@ public class User implements UserDetails {
 
 
 
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
-    }
 
-    @Override
-    public boolean isAccountNonExpired() {
-        return true;
-    }
 
-    @Override
-    public boolean isAccountNonLocked() {
-        return true;
-    }
 
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
 
 
 

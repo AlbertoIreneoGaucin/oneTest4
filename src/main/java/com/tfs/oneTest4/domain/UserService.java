@@ -11,7 +11,7 @@ import java.util.List;
 @Service
 @AllArgsConstructor
 public class UserService implements UserDetailsService {
-    private final UserRepository userRepository;
+    private final com.tfs.oneTest4.domain.UserRepo userRepository;
 
     public List<User> getAllUsers(){
         return userRepository.findAll();

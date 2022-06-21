@@ -1,17 +1,15 @@
 
-/*
-package com.tfs.oneTest4.repo;
 
-import com.tfs.oneTest4.domain.User;
+package com.tfs.oneTest4.domain;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 
-public interface UserRepo extends MongoRepository<User, Long> {
+import java.util.Optional;
 
-    User findByUsername(String username);
+public interface UserRepo extends MongoRepository<User, String> {
+
+    //Optional<User> findUserByName(String name);
+    //@Query(" can use a raw query here")
+    User findByEmail(String email);
 }
 
-
-
-
- */

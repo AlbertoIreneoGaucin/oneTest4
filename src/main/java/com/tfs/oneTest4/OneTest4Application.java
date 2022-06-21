@@ -2,6 +2,7 @@ package com.tfs.oneTest4;
 
 import com.tfs.oneTest4.domain.*;
 //import com.tfs.oneTest4.service.UserService;
+import com.tfs.oneTest4.domain.UserRepo;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -89,6 +90,8 @@ public class OneTest4Application {
 
  */
 
+	/*
+
 	@Bean
 	CommandLineRunner init(RoleRepository roleRepository) {
 
@@ -112,6 +115,9 @@ public class OneTest4Application {
 	}
 
 
+	 */
+
+	/*
 	@Bean
 	CommandLineRunner runner(UserRepository userRepository, MongoTemplate mongoTemplate) {
 
@@ -136,12 +142,13 @@ public class OneTest4Application {
 						repository.insert(student);
 					});
 
-			 */
+
 
 		};
 
 	}
-	public void usingMongoTemplateAndQuery2 (UserRepository repository, MongoTemplate mongoTemplate, String
+	*/
+	public void usingMongoTemplateAndQuery2 (UserRepo repository, MongoTemplate mongoTemplate, String
 			email, User user)
 	{
 		Query query = new Query();

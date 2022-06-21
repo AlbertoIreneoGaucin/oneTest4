@@ -4,9 +4,11 @@ package com.tfs.oneTest4.service;
 
 
 import com.tfs.oneTest4.domain.Role;
+import com.tfs.oneTest4.domain.RoleRepository;
 import com.tfs.oneTest4.domain.User;
+import com.tfs.oneTest4.domain.UserRepo;
 import com.tfs.oneTest4.repo.RoleRepo;
-import com.tfs.oneTest4.domain.UserRepository;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -26,7 +28,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 
 
     @Autowired
-    private UserRepository userRepository;
+    private UserRepo userRepository;
     @Autowired
     private RoleRepo roleRepository;
     @Autowired
