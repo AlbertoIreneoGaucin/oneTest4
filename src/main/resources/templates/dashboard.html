@@ -1,1 +1,454 @@
-<h1>this is dash</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+            crossorigin="anonymous"
+    />
+    <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+            crossorigin="anonymous"
+    ></script>
+    <title>Project Management</title>
+    <style>
+      button {
+        margin-right: 10px;
+      }
+
+      .card {
+        margin-top: 10px;
+      }
+    </style>
+</head>
+
+<body onload="showUsers()">
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Project Management</h5>
+            <button type="button" class="btn btn-success" onclick="showUsers()">
+                Show All Users
+            </button>
+            <button
+                    type="button"
+                    class="btn btn-primary"
+                    onclick="showAddUserDialog()"
+            >
+                Add a User
+            </button>
+        </div>
+    </div>
+    <table class="table" id="userTable">
+        <thead>
+        <tr>
+            <th scope="col">Index</th>
+            <th scope="col">Name</th>
+            <th scope="col">isActive</th>
+            <th scope="col">Salary</th>
+            <th scope="col">Company</th>
+            <th scope="col">Operations</th>
+        </tr>
+        </thead>
+        <tbody id="userTableBody"></tbody>
+    </table>
+
+    <!-- Edit a user dialog -->
+    <div
+            class="modal fade"
+            id="editUserDialog"
+            tabindex="-1"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+    >
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Edit a User</h5>
+                    <button
+                            type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close"
+                    ></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group row">
+                            <label for="username-edit" class="col-sm-2 col-form-label"
+                            >Name</label
+                            >
+                            <div class="col-sm-10">
+                                <input
+                                        type="text"
+                                        readonly
+                                        class="form-control-plaintext"
+                                        id="username-edit"
+                                        value=""
+                                />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="salary-edit" class="col-sm-2 col-form-label"
+                            >Salary</label
+                            >
+                            <div class="col-sm-10">
+                                <input
+                                        type="text"
+                                        class="form-control"
+                                        id="salary-edit"
+                                        value=""
+                                />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button
+                            type="button"
+                            class="btn btn-secondary"
+                            data-bs-dismiss="modal"
+                    >
+                        Close
+                    </button>
+                    <button
+                            type="button"
+                            class="btn btn-primary"
+                            onclick="updateUser()"
+                    >
+                        Save changes
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Add a user dialog -->
+    <div
+            class="modal fade"
+            id="addUserDialog"
+            tabindex="-1"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+    >
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Add a User</h5>
+                    <button
+                            type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close"
+                    ></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group row">
+                            <label for="username-add" class="col-sm-2 col-form-label"
+                            >Name</label
+                            >
+                            <div class="col-sm-10">
+                                <input
+                                        type="text"
+                                        class="form-control"
+                                        id="username-add"
+                                        value=""
+                                />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="company-add" class="col-sm-2 col-form-label"
+                            >Company</label
+                            >
+                            <div class="col-sm-10">
+                                <input
+                                        type="text"
+                                        class="form-control"
+                                        id="company-add"
+                                        value=""
+                                />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="salary-add" class="col-sm-2 col-form-label"
+                            >Salary</label
+                            >
+                            <div class="col-sm-10">
+                                <input
+                                        type="text"
+                                        class="form-control"
+                                        id="salary-add"
+                                        value=""
+                                />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button
+                            type="button"
+                            class="btn btn-secondary"
+                            data-bs-dismiss="modal"
+                    >
+                        Close
+                    </button>
+                    <button type="button" class="btn btn-primary" onclick="addUser()">
+                        Add
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+<script>
+    // data object that stores 7 users
+    const data = [
+      {
+        _id: "5e5d8a33962020b0583a5ade",
+        index: 1,
+        isActive: false,
+        salary: "$1,878.32",
+        picture: "http://placehold.it/32x32",
+        age: 34,
+        eyeColor: "brown",
+        name: "Jewel Sosa",
+        gender: "female",
+        company: "SIGNIDYNE",
+        email: "jewelsosa@signidyne.com",
+        phone: "+1 (817) 538-2348",
+        address: "291 Kingston Avenue, Bannock, Washington, 8709",
+      },
+      {
+        _id: "5e5d8a33d5668ba005759ac4",
+        index: 2,
+        isActive: false,
+        salary: "$3,559.88",
+        picture: "http://placehold.it/32x32",
+        age: 23,
+        eyeColor: "brown",
+        name: "Grimes Olsen",
+        gender: "male",
+        company: "YURTURE",
+        email: "grimesolsen@yurture.com",
+        phone: "+1 (926) 502-3084",
+        address: "377 Danforth Street, Cleary, Virginia, 6123",
+      },
+      {
+        _id: "5e5d8a333296d622e5170499",
+        index: 3,
+        isActive: true,
+        salary: "$2,300.27",
+        picture: "http://placehold.it/32x32",
+        age: 33,
+        eyeColor: "brown",
+        name: "Velasquez Bennett",
+        gender: "male",
+        company: "FUTURITY",
+        email: "velasquezbennett@futurity.com",
+        phone: "+1 (820) 452-3033",
+        address: "605 Metrotech Courtr, Retsof, Kentucky, 2629",
+      },
+      {
+        _id: "5e5d8a33668e01faecf43a21",
+        index: 4,
+        isActive: false,
+        salary: "$2,123.47",
+        picture: "http://placehold.it/32x32",
+        age: 38,
+        eyeColor: "green",
+        name: "Gayle Burt",
+        gender: "female",
+        company: "VURBO",
+        email: "gayleburt@vurbo.com",
+        phone: "+1 (847) 419-3818",
+        address: "319 Highland Avenue, Elizaville, Arkansas, 273",
+      },
+      {
+        _id: "5e5d8a33e0911b7fc2d6e9f3",
+        index: 5,
+        isActive: true,
+        salary: "$2,358.41",
+        picture: "http://placehold.it/32x32",
+        age: 32,
+        eyeColor: "blue",
+        name: "Lori Price",
+        gender: "female",
+        company: "GRUPOLI",
+        email: "loriprice@grupoli.com",
+        phone: "+1 (915) 511-3754",
+        address: "904 Canal Avenue, Canoochee, Pennsylvania, 8762",
+      },
+      {
+        _id: "5e5d8a3314b603b9ef876879",
+        index: 6,
+        isActive: false,
+        salary: "$3,752.40",
+        picture: "http://placehold.it/32x32",
+        age: 31,
+        eyeColor: "green",
+        name: "Marissa Hines",
+        gender: "female",
+        company: "SNORUS",
+        email: "marissahines@snorus.com",
+        phone: "+1 (870) 512-3865",
+        address: "326 Montieth Street, Stouchsburg, Guam, 5638",
+      },
+      {
+        _id: "5e5d8a3349fecb478c4037bc",
+        index: 7,
+        isActive: false,
+        salary: "$1,792.48",
+        picture: "http://placehold.it/32x32",
+        age: 20,
+        eyeColor: "brown",
+        name: "Polly Payne",
+        gender: "female",
+        company: "STOCKPOST",
+        email: "pollypayne@stockpost.com",
+        phone: "+1 (997) 501-2848",
+        address: "286 Canda Avenue, Yardville, Indiana, 5281",
+      },
+    ];
+
+    function showUsers() {
+      document.getElementById("userTableBody").innerHTML = "";
+      data.forEach((user) => {
+        document.getElementById("userTableBody").innerHTML += `<tr>
+            <td>
+            ${user.index}
+            </td>
+            <td>
+              ${user.name}
+            </td>
+            <td>
+              ${user.isActive}
+            </td>
+            <td>
+              ${user.salary}
+            </td>
+            <td>
+              ${user.company}
+            </td>
+            <td>
+              <button type="button" class="btn btn-info" onclick="showEditDialog('${user._id}')">Edit</button>
+              <button type="button" class="btn btn-danger" onclick="del('${user._id}')">Delete</button>
+            </td>
+          </tr>`;
+      });
+    }
+
+    // You can use this object to store values of the user under editing
+    let editForm = {
+      name: "",
+      salary: "",
+      _id: "",
+    };
+
+    const editUserDialogModal = new bootstrap.Modal(
+      document.getElementById("editUserDialog"),
+      {
+        keyboard: false,
+      }
+    );
+
+    const addUserDialogModal = new bootstrap.Modal(
+      document.getElementById("addUserDialog"),
+      {
+        keyboard: false,
+      }
+    );
+
+    // Complete this function:
+    function showEditDialog(userId)
+    {
+      var name = document.getElementById("username-edit")
+      var salary = document.getElementById("salary-edit")
+      for (var i = 0; i < data.length; i++)
+      {
+        if (data[i]._id == userId)
+        {
+          salary.value = data[i].salary
+          name.value = data[i].name
+        }
+      }
+      editForm._id = userId
+      // the modal
+      editUserDialogModal.toggle()
+    }
+
+    // Complete this function:
+    function updateUser()
+    {
+      // only salary is getting changed
+      var salary = document.getElementById("salary-edit");
+      var userId = editForm._id;
+      for (var i = 0; i < data.length; i++)
+      {
+        if (data[i]._id == userId)
+        {
+          data[i].salary = salary.value;
+        }
+      }
+      editForm._id = "";
+      showUsers();
+    }
+
+    // Complete this function:
+    function del(userId)
+    {
+      data.splice(data.findIndex((e) => e._id === userId),1);
+      showUsers();
+    }
+
+    // Don't modify this function.
+    function showAddUserDialog() {
+      addUserDialogModal.toggle();
+    }
+
+    // Complete this function:
+    function addUser()
+    {
+      var id = generateUserId()
+      var name = document.getElementById("username-add")
+      var salary = document.getElementById("salary-add")
+      var company = document.getElementById("company-add")
+      let addedUserObject =
+      {
+        _id: id,
+        name: name.value,
+        salary: salary.value,
+        company: company.value,
+        // was it supposed to be false?
+        isActive: true,
+        // put it at the end
+        index: data[data.length - 1].index + 1,
+      };
+      data.push(addedUserObject);
+      // clear the add form
+      name.value = ""
+      salary.value = ""
+      company.value = ""
+      showUsers()
+    }
+
+    // Don't modify this function. Utility function, use this to generate user._id for a new user
+    function generateUserId() {
+      let timestamp = ((new Date().getTime() / 1000) | 0).toString(16);
+      return (
+        timestamp +
+        "xxxxxxxxxxxxxxxx"
+          .replace(/[x]/g, function () {
+            return ((Math.random() * 16) | 0).toString(16);
+          })
+          .toLowerCase()
+      );
+    }
+  </script>
+</html>
+
